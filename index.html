@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>ikvjwd</title>
+</head>
+<body bgcolor="white" text="black">
+<center><h1>Welcome to ikvjwd!</h1></center>
+<h2>The symptom</h2>
+<p>IPv6-only systems can't use GitHub.</p>
+<pre>
+$ git clone git@github.com:atom/atom.git
+Cloning into 'atom'...
+ssh: connect to host github.com port 22: Network is unreachable
+fatal: The remote end hung up unexpectedly
+</pre>
+<h2>The problem</h2>
+<p>github.com is only accessible over IPv4.</p>
+<pre>
+$ host -t aaaa github.com
+github.com has no AAAA record
+</pre>
+<h2>The right solution</h2>
+<p>GitHub should be available over IPv6. Only GitHub can make that happen, so <a href="https://github.com/contact">contact them</a> if IPv6 is important to you.</p>
+<h2>A workaround</h2>
+<p>Just use ikvjwd.com instead of github.com.</p>
+<pre>
+$ git clone git@ikvjwd.com:atom/atom.git
+Cloning into 'atom'...
+remote: Reusing existing pack: 99320, done.
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 99323 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (99323/99323), 238.57 MiB | 3.05 MiB/s, done.
+Resolving deltas: 100% (69346/69346), done.
+</pre>
+<h2>More details</h2>
+<h3>Security</h3>
+<p>You <strong>must</strong> verify that you see the same SSH host key fingerprint from ikvjwd.com as you are seeing from github.com. Otherwise, we could be performing a <a href="http://en.wikipedia.org/wiki/Man-in-the-middle_attack"><abbr title="Man-in-the-middle">MITM</abbr> attack</a> on you. We're not doing that, but you have no reason to trust us. So please <a href="https://help.github.com/articles/what-are-github-s-ssh-key-fingerprints">check</a>. Seriously.</p>
+<h3>Why "ikvjwd"?</h3>
+<p>GitHub only provides IPv4. This service provides IPv6. The difference is 2.</p>
+<pre>
+$ echo github | caesar 2
+ikvjwd
+</pre>
+<hr>
+<p>Copyright &copy; 2014 <a href="https://keybase.io/rcsheets">Robert Charles Sheets</a>. GitHub is a trademark of GitHub, Inc. This site is not affiliated with GitHub, Inc.</p>
+</body>
+</html>
